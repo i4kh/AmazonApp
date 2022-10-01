@@ -1,0 +1,45 @@
+.container{
+    display: flex;
+    width: 100%;
+    margin: 1.5% 0 0 0;
+    justify-content: center;
+    align-items: center;
+}
+.container div{
+    cursor: default;
+    width: 16.6%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.image_blue, .image_green{
+    border-radius: 5px;
+}
+.image_green{
+    border: 5px solid #24b300;
+    /* height: 100px; */
+}
+.image_blue{
+    border: 5px solid #0068b3;
+    /* height: 100px; */
+}
+.special_task{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.special_task h3{
+    font-weight: 400;
+}
+.button{ 
+    font-size: 36px;
+    color: #1c1919;
+    background-color: lightgray;
+    cursor: pointer;
+    font-weight: bold;
+    border: none;
+    text-align: center;
+}
+.button:hover{
+    color: #fba016;
+}

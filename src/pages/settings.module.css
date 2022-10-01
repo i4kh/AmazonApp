@@ -1,0 +1,17 @@
+.container{
+    height: 80vh;
+    display: flex;
+    align-items: center;
+}
+.left, .right {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.left{
+    justify-content: flex-start;
+}
+.right{
+    justify-content: center;
+}
