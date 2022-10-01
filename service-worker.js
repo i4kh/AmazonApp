@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/i4kh/AmazonApp/precache-manifest.627f96c2fd662e271b0b2df6ff0ee4ac.js"
+  "/AmazonApp/precache-manifest.75b0c5b9d0fbcee22edfe339c5f6b053.js"
 );
 
 workbox.clientsClaim();
@@ -28,7 +28,7 @@ self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
-workbox.routing.registerNavigationRoute("/i4kh/AmazonApp/index.html", {
+workbox.routing.registerNavigationRoute("/AmazonApp/index.html", {
   
   blacklist: [/^\/_/,/\/[^/]+\.[^/]+$/],
 });

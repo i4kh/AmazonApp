@@ -1,15 +1,15 @@
 {
-  "main.css": "/i4kh/AmazonApp/static/css/main.189098ab.chunk.css",
-  "main.js": "/i4kh/AmazonApp/static/js/main.3f5aa3ba.chunk.js",
-  "main.js.map": "/i4kh/AmazonApp/static/js/main.3f5aa3ba.chunk.js.map",
-  "runtime~main.js": "/i4kh/AmazonApp/static/js/runtime~main.6bcc07fe.js",
-  "runtime~main.js.map": "/i4kh/AmazonApp/static/js/runtime~main.6bcc07fe.js.map",
-  "static/js/2.4d50f713.chunk.js": "/i4kh/AmazonApp/static/js/2.4d50f713.chunk.js",
-  "static/js/2.4d50f713.chunk.js.map": "/i4kh/AmazonApp/static/js/2.4d50f713.chunk.js.map",
-  "static/js/3.268c5232.chunk.js": "/i4kh/AmazonApp/static/js/3.268c5232.chunk.js",
-  "static/js/3.268c5232.chunk.js.map": "/i4kh/AmazonApp/static/js/3.268c5232.chunk.js.map",
-  "index.html": "/i4kh/AmazonApp/index.html",
-  "precache-manifest.627f96c2fd662e271b0b2df6ff0ee4ac.js": "/i4kh/AmazonApp/precache-manifest.627f96c2fd662e271b0b2df6ff0ee4ac.js",
-  "service-worker.js": "/i4kh/AmazonApp/service-worker.js",
-  "static/css/main.189098ab.chunk.css.map": "/i4kh/AmazonApp/static/css/main.189098ab.chunk.css.map"
+  "main.css": "/AmazonApp/static/css/main.189098ab.chunk.css",
+  "main.js": "/AmazonApp/static/js/main.3f5aa3ba.chunk.js",
+  "main.js.map": "/AmazonApp/static/js/main.3f5aa3ba.chunk.js.map",
+  "runtime~main.js": "/AmazonApp/static/js/runtime~main.8a0158b2.js",
+  "runtime~main.js.map": "/AmazonApp/static/js/runtime~main.8a0158b2.js.map",
+  "static/js/2.4d50f713.chunk.js": "/AmazonApp/static/js/2.4d50f713.chunk.js",
+  "static/js/2.4d50f713.chunk.js.map": "/AmazonApp/static/js/2.4d50f713.chunk.js.map",
+  "static/js/3.268c5232.chunk.js": "/AmazonApp/static/js/3.268c5232.chunk.js",
+  "static/js/3.268c5232.chunk.js.map": "/AmazonApp/static/js/3.268c5232.chunk.js.map",
+  "index.html": "/AmazonApp/index.html",
+  "precache-manifest.75b0c5b9d0fbcee22edfe339c5f6b053.js": "/AmazonApp/precache-manifest.75b0c5b9d0fbcee22edfe339c5f6b053.js",
+  "service-worker.js": "/AmazonApp/service-worker.js",
+  "static/css/main.189098ab.chunk.css.map": "/AmazonApp/static/css/main.189098ab.chunk.css.map"
 }
