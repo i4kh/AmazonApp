@@ -4,26 +4,14 @@ import classes from './user.module.css'
 
 
 const User = (props) => {
-    const image = [ ...props.image ]
-    let associates = [];
-    // console.log(props.id);
-
-    
-
-    const displayAssociates = () => {
-        associates.push(
-            <div className={classes.user_container} onClick={props.handleClick}>
-                {props.image}
-                {/* <div>{localData[props.id].Username}</div> */}
-            </div>
-        )
-        return associates;
-    }
-
+    console.log(props.data);
 
     return(
         <div className={classes.container}>
-            {displayAssociates()}
+            <div className={classes.user_container} onClick={props.handleClick}>
+            <img src={URL.createObjectURL(props.data.image)} alt='user-image' className={props.data.Employment_Type == 'TEMP' ? classes.image_green : classes.image_blue}/>
+                <div>{props.data.Username}</div>
+            </div>
         </div>
     )
 }

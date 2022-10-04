@@ -10,6 +10,8 @@ const List = (props) => {
     
     const [window, openWindow] = useState();
     const [id, storeId] = useState();
+    const [option, setOption] = useState();
+    
     const setSpecialTask = (e) => {
         openWindow({title:'Set a special task'})
         storeId(e.target.id)
@@ -18,7 +20,6 @@ const List = (props) => {
     const removeWindow = () => {
         openWindow();
       }
-    const [option, setOption] = useState();
     
       const addTask = (e) => {
         setOption('' + e.target.innerHTML)

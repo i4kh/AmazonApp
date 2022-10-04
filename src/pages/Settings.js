@@ -37,11 +37,9 @@ const Settings = (props) => {
     }
 
     const addPictures = (e) => {
-        let localImages = [];
-        console.log(e.target.files);
-        localImages = [...e.target.files];
-        setPictures([...e.target.files]);
-        props.sendPictures(e.target.files);
+        setPictures([...Array.from(e.target.files)]);
+
+        props.sendPictures(Array.from(e.target.files));
     }
 
     return(

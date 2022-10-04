@@ -1,103 +1,132 @@
-import React, {useState} from "react";
-import Button from "../Components/Button";
+import React, {useEffect, useState} from "react";
 import classes from './table.module.css'
 import Action from "../Components/Action";
 import Users from "../Components/Users";
-import User from "../Components/User";
-import data from "../data";
 import MessageBox from "../Components/Messagebox";
+import * as XLSX from 'xlsx';
 
 const Table = (props) => {
 
-    const localData = [
-        ...props.data
-    ]
-    
+    const [pictures, setPictures] = useState()
+    const [importedData, setData] = useState()
     const [window, openWindow] = useState()
-    const [currentIDs, setCurrentIDs] = useState([])
-    const [ids, setIDs] = useState()
-    const [employees, setEmployees ] = useState({})
+    const [imported, isImported] = useState(false)
+    const [settings, openSettings] = useState({title:'Import required data'})
+    const [employees, setEmployees ] = useState([])
 
-    const getIDs = (event) => {
-        setIDs(event)
+    
+    const popUp = (e) => {
+        openSettings(e)
     }
     
-    let getRequiredNumbers = (event) => {    
-        console.log(event);
+    const addPictures = (e) => {
+        setPictures([...Array.from(e.target.files)]);
+    }
+    
+    const getNumbers = (event) => {
         assignIDs(event)
     }
-    
-    let busyIDs = [];
-    let workersIDs = {};
 
-const workers = new Map()
-const assignIDs = (event) => {
-    
-    let addPickers = {'pickers':generateID(Number(event.pick))};
-    let addYardMarshalls = {'yardMarshalls':generateID(Number(event.yard))};
-    let addProblemSolve = {'problemSolve':generateID(Number(event.ps))};
-    let addSpecialAssignment = {'specialAssignment':generateID(Number(event.spcl))};
-    let addBadgeCheck = {'badgeCheck':generateID(Number(event.pick))};
+    useEffect(() => { 
+        if(importedData && pictures) {
+            popUp()
+        }
+        else{
+            popUp({title: 'Import required data'})
+        }
+    }, [importedData])
 
-    let addEmployees ={
-        'pickers' : generateID(Number(event.pick)),
-        'yardMarshalls' : generateID(Number(event.yard)),
-        'problemSolve': generateID(Number(event.ps)),
-        'specialAssignment' : generateID(Number(event.spcl)),
-        'badgeCheck': generateID(Number(event.pick))
-    }
-
-    setEmployees(employee => ({
-        ...employee,
-        ...addEmployees
-    }))
+    //doesn't work: line 46
+    //prevent useEffect loop
     
-    workers.set('pickers', )
-    workers.set('', generateID(Number(event.yard)))
-    workers.set('', generateID(Number(event.ps)))
-    workers.set('specialAssignment', generateID(Number(event.spcl)))
-    workers.set('badgeCheck', generateID(Number(event.badge)))
-    workersIDs = Object.fromEntries(workers);
-    console.log(ids)
-}
-
-    
-    const generateID = (number) => {
-        for(let i = 0; i < number; i++) {
-            let random = Math.floor(Math.random() * localData.length)
-            console.log('random ', random);
-            if(busyIDs.includes(random)){
-                i--
-                console.log('doesnt include');
+    const checkFileFormat = (e) => {
+        const file = e.target.files[0].name;
+        const correctFormats = ['xlsx', 'xltm', 'xlsm', 'xlsb', 'xltx', 'xltm'];
+        let hasFormat = false;
+        for(let i = 0; i <= correctFormats.length; i++){
+            if(file.includes(correctFormats[i])){
+                console.log(`correct format`);
+                hasFormat = true;
+                handleFile(e);
+                break;
             }
             else{
-                console.log('includes');
-                busyIDs.push(random)
-                // currentIDs.push(random)
-            }   
+                console.log(`incorrectFormat`);
+            }
         }
-        setCurrentIDs(busyIDs)
-        return currentIDs
+        
+        console.log(e);
     }
-    
-    const handleClick = (e) => {
-        openWindow({title:'Set a task'})
+
+    const handleFile = async (e) => {
+        const file = e.target.files[0];
+        const data = await file.arrayBuffer();
+        const workbook = XLSX.read(data);
+        const worksheet = workbook.Sheets[workbook.SheetNames[0]];
+        const jsonData = XLSX.utils.sheet_to_json(worksheet);
+        setData(jsonData)
     }
-    
-    const closeWindow = () => {
-        openWindow()
+
+const removeWindow = () => {
+    openSettings() 
+}
+
+const assignIDs = (event) => {
+    if(event) {
+        let addEmployees = {
+            'pickers' : generateID('pickers', Number(event.pick)),
+            'yardMarshalls' : generateID('yard', Number(event.yard)),
+            'problemSolve': generateID('pms',Number(event.ps)),
+            'specialAssignment' : generateID('sf', Number(event.spcl)),
+            'badgeCheck': generateID('trap', Number(event.badge))
+        }
+        filterImage(addEmployees)
     }
-    
+}
+
+const filterImage = (user) => {
+    let localUser = {};   
+    for (const [key, value ] of Object.entries(user)){
+        value.map((current) => {
+            let currentImage = pictures.find(image => image.name === `${current.Username}.jpg`)
+            current.image = currentImage;
+        })        
+        localUser[key] = value;
+    }
+    setEmployees({
+        ...localUser
+    })
+}   
+
+const generateID = (number) => {    
+        let workingEmployees = [];
+        for (let i = 0; i < number; i++){
+            let index = Math.floor(Math.random() * importedData.length)
+            !workingEmployees.includes(importedData[index]) ?
+            workingEmployees.push(importedData[index]) : --i ;
+        }
+    return workingEmployees;
+}
+
+const handleClick = (e) => {
+    openWindow({title:'Set a task'})
+}
+
+const closeWindow = () => {
+    openWindow()
+}
+
     return (
         <div className={classes.background}>
-            {console.log(currentIDs)}
-            {window && 
-            <MessageBox title={window.title} close={closeWindow}>
-                <div>Hello</div>
-            </MessageBox>
-            }
-            <Action sendData = {getRequiredNumbers} />
-            <Users data = {props.data} images= {props.imageList} click={handleClick} ids={ids} ></Users>
+            {settings && 
+            <MessageBox title={settings.title} close={removeWindow}>
+                <h3>Import excel with employees list</h3>
+                <input type='file' onChange={(e) => checkFileFormat(e)}></input>
+                <h3>Choose folder with employees pictures</h3>
+                <input type='file' multiple accept="image/*" onChange = {addPictures} />
+            </MessageBox>}
+            <Action sendData = {getNumbers} />
+            <Users click={handleClick} workers={employees} ></Users>
         </div>
     )
 }
