@@ -5,17 +5,6 @@ import classes from './action.module.css'
 
 const Action = (props) => { 
    
-    const getDate = (separator=' - ') => {
-        
-        let newDate = new Date()
-        let date = newDate.getDate();
-        let month = newDate.getMonth() + 1;
-        let year = newDate.getFullYear();
-
-
-        return (`${year}${separator}${month<10?`0${month}`:`${month}`}${separator}${date}`)
-    }
-    
     // yardMarshals 
     
     const [ yardMarshals, getYardMarshals ] = useState(4);
@@ -68,24 +57,13 @@ const Action = (props) => {
     return(
         <div className={classes.container}>
             <div className={classes.left}>
-                <div className={classes.date}>
-                    <h2>DATE</h2>
-                    <h2 className={classes.orange}>{getDate()}</h2>
-                </div>
-                <div className={classes.buttons}>
-                    <Button className={classes.button} onClick={startShift}> Start Shift </Button>
-                    <Button className={classes.button}> Clear Board </Button>
-                    <Button className={classes.button}> Replan </Button>
-                </div>
-            </div>
-            <div className={classes.right}>
                 <div className={classes.input_container}>
                     <div className={classes.input_line}>
-                        <h3>Pick Stage</h3>
+                        <h3>Pickers</h3>
                         <input type={'number'} className={classes.input} onChange = {pickCounter}></input>
                     </div>
                     <div className={classes.input_line}>
-                        <h3>SA</h3>
+                        <h3>Special Assignment</h3>
                         <input type={'number'} className={classes.input} onChange = {SACounter}></input>
                     </div>
                     <div className={classes.input_line}>
@@ -93,16 +71,20 @@ const Action = (props) => {
                         <input type={'number'} className={classes.input} onChange = {BCCounter}></input>
                     </div>
                     <div className={classes.input_line}>
-                        <h3>Yard Marshal</h3>
+                        <h3>Yard Marshall</h3>
                         <input type={'number'} className={classes.input} onChange={YMcounter}></input>
                     </div>
                     <div className={classes.input_line}>
-                        <h3>PS</h3>
+                        <h3>Problem Solve</h3>
                         <input type={'number'} className={classes.input} onChange = {psCounter}></input>
                     </div>
                 </div>
-                <div className={classes.shift_container}>
-                    <h1>Early Shift</h1>
+            </div>
+            <div className={classes.right}>
+                <div className={classes.buttons}>
+                    <Button className={classes.button} onClick={startShift}> Start Shift </Button>
+                    <Button className={classes.button}> Clear Board </Button>
+                    <Button className={classes.button}> Replan </Button>
                 </div>
             </div>
         </div>

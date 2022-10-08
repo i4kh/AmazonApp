@@ -1,11 +1,7 @@
 import React from "react";
 import classes from './user.module.css'
 
-
-
 const User = (props) => {
-    console.log(props.data);
-
     return(
         <div className={classes.container}>
             <div className={classes.user_container} onClick={props.handleClick}>

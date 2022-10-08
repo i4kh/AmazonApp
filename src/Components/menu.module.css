@@ -1,20 +1,35 @@
 .header{
-    /* padding-left: 10px; */
     height: 100px;
     display: flex;
     background-color: lightgray;
     max-width: 100%;
     justify-content: space-evenly;
 }
+.container_right{
+    width: 50%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+.container_right button{
+    margin-left: 20%;
+    text-transform: uppercase;
+    cursor: pointer;
+    border: none;
+    background-color: lightgray;
+    font-size: 20px;
+    font-weight: 700;
+}
+.container_right :hover {
+    color: #fba016;
+}
 .image{
-    /* flex-basis: 30%; */
     align-self: center;
     width: 30%;
     height: auto;
 }
 .links{
     flex-basis: 50%;
-    /* flex-grow: 1; */
     display: flex;
     font-size: 26px;
     justify-content: space-evenly;
@@ -40,4 +55,14 @@
     text-transform: uppercase;
     /* filter: drop-shadow(0 0 1px); */
     
+}
+
+.shift_container{
+    /* align-self: center; */
+    /* justify-content: flex-end; */
+}
+.shift_container h1{
+    font-style: italic;
+    color: #fba016;
+    margin-right: 5%;
 }

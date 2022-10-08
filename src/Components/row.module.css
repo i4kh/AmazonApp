@@ -2,26 +2,32 @@
     display: flex;
     width: 100%;
     margin: 1.5% 0 0 0;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
+}
+.container img{
+    /* margin-right: 6%; */
+    /* margin-right: 5%; */
 }
 .container div{
     cursor: default;
-    width: 16.6%;
+    width: 20%;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
+}
+.special_task{
+    /* width: 20%; */
 }
 .image_blue, .image_green{
     border-radius: 5px;
+    width: 80px;
 }
 .image_green{
     border: 5px solid #24b300;
-    /* height: 100px; */
 }
 .image_blue{
     border: 5px solid #0068b3;
-    /* height: 100px; */
 }
 .special_task{
     display: flex;
