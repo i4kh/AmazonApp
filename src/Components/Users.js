@@ -1,20 +1,33 @@
-import React, {useState } from "react";
+import React, { useState } from "react";
 import classes from './users.module.css'
 import User from "./User";
-import {data} from "../data" 
+import EmployeeCard from "./EmployeeCard";
 
 const Users = (props) => {
+    const [employeeCard, setEmployeeCard] = useState(false)
+    const [clickedEmployeeInfo, setClickedEmployeeInfo ] = useState()
     const employees = {
         ...props.workers
     }
 
+    const showEmployeeCard = (props) => {
+        setEmployeeCard(true)
+    }
+
+    const getClickedEmployee = (props) => {
+        setClickedEmployeeInfo(props)
+    }
+
     const displayEmployees = (type) => {
         let array = employees[type] ? employees[type] : [];
-        return array ? array.map((value, index) => <User data={value} index={index} click={() => {}}/>) : '' ;
+        return array ? array.map((value, index) => <User data={value} index={index} userClick={showEmployeeCard} sendClickedInfo = {getClickedEmployee}/>) : '' ;
 }
 
     return(
     <div className={classes.container}>
+        {employeeCard &&
+            <EmployeeCard data={clickedEmployeeInfo} close={() => {setEmployeeCard(false)}}/> 
+        }
                 <h1 className={classes.title}>Pick & Stage</h1>
                 <div className={classes.table}>
                     <div className={classes.container_left}>
