@@ -11,8 +11,12 @@ Get the list of employees with all the required data.
 Display the required data in Table view to present it to the shift.
 
 0.1.1
-Functionality update: Employee Cart added.
+Functionality update: Employee Card added.
 When clicking on employee's picture new window opened with information about them.
+
+0.1.2
+Employee Card update.
+Adding special task is now available.
 
 ## Link to test the app
   https://i4kh.github.io/AmazonApp/
