@@ -1,33 +1,19 @@
-import React, { useState } from "react";
+import React from "react";
 import classes from './users.module.css'
 import User from "./User";
-import EmployeeCard from "./EmployeeCard";
 
 const Users = (props) => {
-    const [employeeCard, setEmployeeCard] = useState(false)
-    const [clickedEmployeeInfo, setClickedEmployeeInfo ] = useState()
     const employees = {
         ...props.workers
     }
 
-    const showEmployeeCard = (props) => {
-        setEmployeeCard(true)
-    }
-
-    const getClickedEmployee = (props) => {
-        setClickedEmployeeInfo(props)
-    }
-
     const displayEmployees = (type) => {
         let array = employees[type] ? employees[type] : [];
-        return array ? array.map((value, index) => <User data={value} index={index} userClick={showEmployeeCard} sendClickedInfo = {getClickedEmployee}/>) : '' ;
+        return array ? array.map((value, index) => <User data={value} index={index} />) : '' ;
 }
 
     return(
     <div className={classes.container}>
-        {employeeCard &&
-            <EmployeeCard data={clickedEmployeeInfo} close={() => {setEmployeeCard(false)}}/> 
-        }
                 <h1 className={classes.title}>Pick & Stage</h1>
                 <div className={classes.table}>
                     <div className={classes.container_left}>
@@ -43,13 +29,17 @@ const Users = (props) => {
                         {displayEmployees('problemSolve')}
                     </div>
                     <div className={classes.container_bottom}>
-                        <div className={classes.specialAssignment}>
-                            <h2>Special Assignment</h2>
-                            {displayEmployees('specialAssignment')}
+                        <div>
+                            <h2 className={classes.title}>Special Assignment</h2>
+                            <div className={classes.specialAssignment}>
+                                {displayEmployees('specialAssignment')}
+                            </div>
                         </div>
-                        <div className={classes.badgeCheck}>
-                            <h2>Badge Check</h2>
-                            {displayEmployees('badgeCheck')}
+                        <div>
+                            <h2 className={classes.title}>Badge Check</h2>
+                            <div className={classes.badgeCheck}>
+                                {displayEmployees('badgeCheck')}
+                            </div>
                         </div>
                     </div>
                     </div>

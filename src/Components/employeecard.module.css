@@ -38,7 +38,7 @@
     width: 100%;
     display: flex;
 }
-.right, .left, .bottom_right{
+.right, .left {
     display: flex;
 }
 .left{
@@ -57,17 +57,18 @@
     font-weight: 400;
 }
 .bottom{
-    margin-top: -25%;
-}
-.bottom_right{
     flex-direction: column;
-    align-items: center;
     justify-content: space-around;
-    width: 50%;
+    align-items: center;
 }
-.bottom_left{
-    padding-left: 1%;
-    width: 50%;
+table{
+    inline-size: 100%;
+}
+table tr{
+    margin-bottom: 15%;
+}
+tr{
+    height: 50px;
 }
 .button{
     align-self: center;

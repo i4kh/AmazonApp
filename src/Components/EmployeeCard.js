@@ -1,10 +1,18 @@
-import React from "react";
+import React, {useState} from "react";
 import classes from './employeecard.module.css'
 
 const EmployeeCard = (props) => {
-    console.log(props.data);
 
+    const [task, setTask] = useState()
+
+    const getSpecialTask = (e) => {
+        setTask(e.target.value)
+    }
     
+    const handleSubmit = (e) => {
+        props.task(task)
+        props.close()
+    }
 
     return(
         <div>
@@ -35,22 +43,33 @@ const EmployeeCard = (props) => {
                     </div>
                 </div>
                 <div className={classes.bottom}>
-                    <div className={classes.bottom_left}>
-                        <p>Replace with</p>
-                        <p>Change position with</p>
-                        <p>Set a special assignment</p>
-                    </div>
-                    <div className={classes.bottom_right}>
-                        <select id='replace' >
-                            <option>salam</option>
-                        </select>
-                        <select id='change' >
-                            <option>balam</option>    
-                        </select>
-                        <input type='text'></input>
-                    </div>
+                    <table>
+                        <tr>
+                            <td>Replace with:</td>
+                            <td align="right">
+                                <select id='replace'>
+                                    <option>salam</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Change position with:</td>
+                            <td align="right">
+                                <select id='change'>
+                                    <option>balam</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Set a special task:</td>
+                            <td align="right">
+                                <input type='text' onChange={getSpecialTask} />
+                            </td>
+                        </tr>
+                    </table>
+
                 </div>
-                <button type='submit' className={classes.button}>Save</button>
+                <button type='submit' className={classes.button} onClick={handleSubmit}>Save</button>
             </div>
         </div>
     )

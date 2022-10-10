@@ -15,7 +15,12 @@
     cursor: pointer;
 }
 .username{
+    margin-top: 3%;
+    font-size: 20px;
     justify-self: center;
+}
+.task{
+    margin-top: -5%;
 }
 .image_blue, .image_green{
     height: 80px;
