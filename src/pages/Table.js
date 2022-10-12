@@ -99,8 +99,15 @@ const Table = (props) => {
         setEmployees({
             ...localUser
         })
-    }   
-
+    }
+    
+ // error state 
+    
+// try {
+    
+// } catch (error) {
+    
+// }
     let workingEmployees = [];
     const generateID = (number) => {    
             let currentEmployees = [];
