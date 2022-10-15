@@ -18,6 +18,10 @@ When clicking on employee's picture new window opened with information about the
 Employee Card update.
 Adding special task is now available.
 
+0.1.3
+Manual display update.
+For special tasks new button has been added to display list of available employees, and assign to certain positions.
+
 ## Link to test the app
   https://i4kh.github.io/AmazonApp/index.js
   
