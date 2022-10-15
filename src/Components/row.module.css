@@ -1,27 +1,39 @@
+.bigBox{
+    height: 85vh;
+}
+.big_container{
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    height: 83vh;
+}
 .container{
     display: flex;
     width: 100%;
     margin: 1.5% 0 0 0;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
-}
-.container img{
-    /* margin-right: 6%; */
-    /* margin-right: 5%; */
 }
 .container div{
     cursor: default;
-    width: 20%;
     display: flex;
     justify-content: flex-start;
     align-items: center;
 }
-.special_task{
-    /* width: 20%; */
+.column{
+    width: 30%;
+}
+.username{
+
+    width: 30%;
+}
+.image{
+    width: 20%;
 }
 .image_blue, .image_green{
     border-radius: 5px;
     width: 80px;
+    margin-left: 15%;
 }
 .image_green{
     border: 5px solid #24b300;
@@ -36,6 +48,16 @@
 }
 .special_task h3{
     font-weight: 400;
+}
+.checkBox{
+    font-size: 22px;
+    width: 20%;
+}
+.checkBox input{
+    width: 30px;
+    height: 30px;
+    margin-left: 40%;
+    cursor: pointer;
 }
 .button{ 
     font-size: 36px;

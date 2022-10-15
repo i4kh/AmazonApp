@@ -38,14 +38,16 @@
 
 .yard{
     display: flex;
+    /* align-items: center; */
+    justify-content: flex-start;
     flex-wrap: wrap;
     margin-top: 2%;
-    margin-left: -2%;
+    margin-left: 2%;
 }
 
-.yard>*{
+/* .yard>*{
     flex: 1 0 20%;  
-}
+} */
 
 .container_bottom{
     display: flex;

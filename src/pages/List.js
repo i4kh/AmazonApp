@@ -13,13 +13,16 @@ const List = (props) => {
         data.image = currentImage;
     })
 
+    const getActiveUsers = (e) => {
+        props.getActive(e)
+    }
+
     return(
         <div>
-            {console.log(localData)}
             <div className={classes.background} onClick={props.onClick}/>
             <div className={classes.scroller}>
                 <Header /> 
-                <Row data = {localData} />
+                <Row data = {localData} sendActiveUsers={getActiveUsers} />
             </div>
         </div>
     )

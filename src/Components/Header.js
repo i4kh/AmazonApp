@@ -5,10 +5,9 @@ const Header = () => {
     return(
     <div className={classes.container}>    
         <div className={classes.image}>Picture</div>
-        <div>User ID</div>
-        <div>Name</div>
-        <div className={classes.input}>Task</div>
-        <div className={classes.empty}>Edit</div>
+        <div className={classes.username}>Username</div>
+        <div className={classes.name}>Name</div>
+        <div className={classes.empty}>Is Active</div>
     </div>)
 }
 

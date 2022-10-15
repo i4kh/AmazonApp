@@ -19,7 +19,7 @@ Employee Card update.
 Adding special task is now available.
 
 ## Link to test the app
-  https://i4kh.github.io/AmazonApp/
+  https://i4kh.github.io/AmazonApp/index.js
   
 ## Important information regarding imported data
   This application doesn't work without correctly formated excel file with required columns, as well as pictures.

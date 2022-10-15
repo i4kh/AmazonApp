@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from "react";
-import { TransitionGroup, CSSTransition } from "react-transition-group";
 import classes from './table.module.css'
 import Action from "../Components/Action";
 import Users from "../Components/Users";
@@ -14,12 +13,28 @@ const Table = (props) => {
     const [importedData, setData] = useState()
     const [window, openWindow] = useState()
     const [list, showList] = useState(false)
-    const [imported, isImported] = useState(false)
     const [settings, openSettings] = useState({title:'Import required data'})
     const [employees, setEmployees ] = useState([])
+    const [activeEmployees, setActiveEmployees] = useState([])
     const [bb, setBB] = useState(0)
     const [gb, setGB] = useState(0)
     
+        const getDate = (separator=' - ') => {
+            let newDate = new Date()
+            let date = newDate.getDate();
+            let month = newDate.getMonth() + 1;
+            let year = newDate.getFullYear();
+            return (`${year}${separator}${month<10?`0${month}`:`${month}`}${separator}${date}`)
+        }
+        
+        const openList = () => {
+            showList(true)
+        }
+        
+        const hideList = () => {
+            showList(false)
+        }
+
     const popUp = (e) => {
         openSettings(e)
     }
@@ -64,11 +79,14 @@ const Table = (props) => {
         const workbook = XLSX.read(data);
         const worksheet = workbook.Sheets[workbook.SheetNames[0]];
         const jsonData = XLSX.utils.sheet_to_json(worksheet);
+        setData(jsonData);
+    }
+    
+    const displayImportedNumbers = (employees) => {
         let green = 0;
         let blue = 0;
-        setData(jsonData);
-        jsonData.map((user) => {
-            user.Employment_Type === 'TEMP' ? green++ : blue++
+        employees.map((user) => {
+            user.Employment_Type === 'TEMP' ? green++ : blue++;
         })
         setGB(green)
         setBB(blue)
@@ -108,6 +126,7 @@ const Table = (props) => {
 // } catch (error) {
     
 // }
+
     let workingEmployees = [];
     const generateID = (number) => {    
             let currentEmployees = [];
@@ -134,24 +153,14 @@ const Table = (props) => {
         openWindow()
     }
 
-    const getDate = (separator=' - ') => {
-        let newDate = new Date()
-        let date = newDate.getDate();
-        let month = newDate.getMonth() + 1;
-        let year = newDate.getFullYear();
-        return (`${year}${separator}${month<10?`0${month}`:`${month}`}${separator}${date}`)
+    const saveActiveEmployees = (props) => {
+        setActiveEmployees([...props])
+        displayImportedNumbers(props)
     }
     
-    const openList = () => {
-        showList(true)
-    }
-    
-    const hideList = () => {
-        showList(false)
-    }
-
     return (
         <div className={classes.background}>
+            {console.log(activeEmployees)}
             {settings && 
             <MessageBox title={settings.title} close={removePopUp}>
                 <div className={classes.messagebox_line}>
@@ -164,7 +173,7 @@ const Table = (props) => {
                 </div>
             </MessageBox>}
             {list &&
-                <List workers={importedData} pictures={pictures} onClick={hideList}/>
+                <List workers={importedData} pictures={pictures} onClick={hideList} getActive={saveActiveEmployees}/>
             }
             <Menu list={openList}/>
             <Action sendData = {getNumbers} />
@@ -188,7 +197,7 @@ const Table = (props) => {
                             </div>
                     </div>
                 </div>
-            <Users click={handleClick} workers={employees} ></Users>
+            <Users click={handleClick} workers={activeEmployees} ></Users>
         </div>
     )
 }
