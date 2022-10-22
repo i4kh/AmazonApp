@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import classes from './users.module.css'
 import User from "./User";
 import PickEmployee from "./PickEmployee";
@@ -7,40 +7,50 @@ const Users = (props) => {
 
     const [availableWorkers, setAvailableWorkers] = useState([])
 
-    let employees = [...props.workers]
+    useEffect(() => {
+        setAvailableWorkers([...props.workers]);
+        console.log('availableWorkers changed to ', props.workers);
+    }, [props.workers])
+    
+    useEffect(() => {
+        console.log('received ', availableWorkers);
+    }, [availableWorkers])
 
-    const displayEmployees = (type) => {
-        // let array = employees[type] ? employees[type] : [];
-        // return array ? array.map((value, index) => <User data={value} index={index} />) : '' ;
-}
+    let employees = availableWorkers == 0 ? [...props.workers] : availableWorkers;
+
+    const displayEmployees = () => {
+        
+        let array = props.display ? availableWorkers : [];
+        return array ? array.map((value, index) => <User data={value} index={index} />) : '';
+    }
 
     return(
         <div className={classes.container}>
                 <h1 className={classes.title}>Pick & Stage</h1>
                 <div className={classes.table}>
                     <div className={classes.container_left}>
-                        {displayEmployees('pickers')}
+                        {displayEmployees()}
                     </div>                
                     <div className={classes.container_right}>
                     <h2 className={classes.title}>Yard Marshalls</h2>
                     <div className={classes.yard}>
-                        <PickEmployee workers={employees} />
+                        <PickEmployee workers={availableWorkers} sendWorkers={(array) => {setAvailableWorkers([...array])}}/>
                     </div>
                     <h2 className={classes.title}>Problem Solve</h2>
                     <div className={classes.yard}>
-                        <button className={classes.special_button}>+</button>
+                        <PickEmployee workers={availableWorkers} sendWorkers={(array) => {setAvailableWorkers([...array])}}/>    
                     </div>
                     <div className={classes.container_bottom}>
                         <div>
                             <h2 className={classes.title}>Special Assignment</h2>
                             <div className={classes.specialAssignment}>
-                                <button className={classes.special_button}>+</button>
+                                <PickEmployee workers={employees} sendWorkers={(array) => {setAvailableWorkers([...array])}} />
                             </div>
                         </div>
                         <div>
                             <h2 className={classes.title}>Badge Check</h2>
                             <div className={classes.badgeCheck}>
-                                <button className={classes.special_button}>+</button>
+                                <PickEmployee workers={employees} sendWorkers={(array) => {setAvailableWorkers([...array])}}/>
                             </div>
                         </div>
                     </div>

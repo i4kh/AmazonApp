@@ -44,49 +44,23 @@ const Action = (props) => {
     const startShift = () => {
         
         console.log('start');
-        const workersCount = {
-            pick: pickStage <= 40 && pickStage > 0? pickStage : console.log(`error `),
-            yard: yardMarshals >= 4 ? yardMarshals : console.log(`error uploading YM`),
-            ps: problemSolve > 0 && problemSolve <=6 ? problemSolve : console.log(`error upoading PS`),
-            spcl: specialAssignment > 0 ? specialAssignment : console.log(`special ass error`),
-            badge: badgeCheck > 0  ? badgeCheck : console.log(`badge Check error `),
-        }   
-        props.sendData(workersCount);
+        // const workersCount = {
+        //     pick: pickStage <= 40 && pickStage > 0? pickStage : console.log(`error `),
+        //     yard: yardMarshals >= 4 ? yardMarshals : console.log(`error uploading YM`),
+        //     ps: problemSolve > 0 && problemSolve <=6 ? problemSolve : console.log(`error upoading PS`),
+        //     spcl: specialAssignment > 0 ? specialAssignment : console.log(`special ass error`),
+        //     badge: badgeCheck > 0  ? badgeCheck : console.log(`badge Check error `),
+        // }   
+        // props.sendData(workersCount);
+        props.click(true)
     }
     
     return(
         <div className={classes.container}>
-            <div className={classes.left}>
-                <div className={classes.input_container}>
-                    <div className={classes.input_line}>
-                        <h3>Pickers</h3>
-                        <input type={'number'} className={classes.input} onChange = {pickCounter}></input>
-                    </div>
-                    <div className={classes.input_line}>
-                        <h3>Special Assignment</h3>
-                        <input type={'number'} className={classes.input} onChange = {SACounter}></input>
-                    </div>
-                    <div className={classes.input_line}>
-                        <h3>Badge Check</h3>
-                        <input type={'number'} className={classes.input} onChange = {BCCounter}></input>
-                    </div>
-                    <div className={classes.input_line}>
-                        <h3>Yard Marshall</h3>
-                        <input type={'number'} className={classes.input} onChange={YMcounter}></input>
-                    </div>
-                    <div className={classes.input_line}>
-                        <h3>Problem Solve</h3>
-                        <input type={'number'} className={classes.input} onChange = {psCounter}></input>
-                    </div>
-                </div>
-            </div>
-            <div className={classes.right}>
                 <div className={classes.buttons}>
                     <Button className={classes.button} onClick={startShift}> Start Shift </Button>
                     <Button className={classes.button}> Clear Board </Button>
-                    <Button className={classes.button}> Replan </Button>
                 </div>
-            </div>
         </div>
     )
 }

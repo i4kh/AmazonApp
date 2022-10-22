@@ -60,14 +60,7 @@
     cursor: pointer;
 }
 .button{ 
+    width: 100px;
     font-size: 36px;
-    color: #1c1919;
-    background-color: lightgray;
-    cursor: pointer;
-    font-weight: bold;
-    border: none;
     text-align: center;
-}
-.button:hover{
-    color: #fba016;
 }

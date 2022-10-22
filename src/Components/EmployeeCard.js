@@ -34,42 +34,24 @@ const EmployeeCard = (props) => {
                             <h3>Name:</h3>
                             <h3>Badge ID:</h3>
                             <h3>Employee ID:</h3>
+                            <h3>Set a special task:</h3>
                         </div>
                         <div className={classes.subright}>
                             <h3>{props.data.Name} {props.data.Surname}</h3>
                             <h3>{props.data.Badge_ID}</h3>
                             <h3>{props.data.Employee_ID}</h3>
+                            <input type='text' onChange={getSpecialTask} />
                         </div>
                     </div>
                 </div>
                 <div className={classes.bottom}>
-                    <table>
-                        <tr>
-                            <td>Replace with:</td>
-                            <td align="right">
-                                <select id='replace'>
-                                    <option>salam</option>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Change position with:</td>
-                            <td align="right">
-                                <select id='change'>
-                                    <option>balam</option>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Set a special task:</td>
-                            <td align="right">
-                                <input type='text' onChange={getSpecialTask} />
-                            </td>
-                        </tr>
-                    </table>
-
+                    <div className={classes.bottom_left}>
+                        <button type='submit' className={classes.button} onClick={handleSubmit}>Save</button>
+                    </div>
+                    <div className={classes.bottom_right}>
+                        <button className={classes.button_red} onClick={() => {}}>Delete</button>
+                    </div>
                 </div>
-                <button type='submit' className={classes.button} onClick={handleSubmit}>Save</button>
             </div>
         </div>
     )

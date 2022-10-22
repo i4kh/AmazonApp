@@ -13,6 +13,7 @@ const Table = (props) => {
     const [importedData, setData] = useState()
     const [window, openWindow] = useState()
     const [list, showList] = useState(false)
+    const [start, setStart ] = useState(false)
     const [settings, openSettings] = useState({title:'Import required data'})
     const [employees, setEmployees ] = useState([])
     const [activeEmployees, setActiveEmployees] = useState([])
@@ -27,35 +28,27 @@ const Table = (props) => {
             return (`${year}${separator}${month<10?`0${month}`:`${month}`}${separator}${date}`)
         }
         
-        const openList = () => {
-            showList(true)
-        }
         
-        const hideList = () => {
-            showList(false)
-        }
-
-    const popUp = (e) => {
-        openSettings(e)
-    }
-
-    const removePopUp = () => {
-        if(importedData && pictures != 0){
-            openSettings()
-        }
-    }    
-
-    const addPictures = (e) => {
-        setPictures([...Array.from(e.target.files)]) 
-    }
-    
-    const getNumbers = (event) => {
-        assignIDs(event)
+        const addPictures = (e) => {
+            setPictures([...Array.from(e.target.files)])
+        filterImage([...Array.from(e.target.files)])
     }
     
     useEffect(() => {
-        importedData && pictures ? popUp() : popUp({title: 'Import required data'})
+        importedData && pictures ? popUp() : popUp({title: 'Import data'})
     }, [importedData, pictures])
+
+    
+    //localStorage test
+    //image import-export doesn't work
+    
+    let localEmployees = [];
+    useEffect(() => {
+        console.log(employees);
+        localStorage.setItem('EmployeeList', JSON.stringify(employees));
+        localEmployees = JSON.parse(localStorage.getItem('EmployeeList'));
+        console.log(localEmployees);
+    }, [employees])
     
     const checkFileFormat = (e) => {
         const file = e.target.files[0].name;
@@ -68,7 +61,7 @@ const Table = (props) => {
                 break;
             }
             else{
-                console.log(`incorrectFormat`);
+                console.log(`incorrect Format`);
             }
         }
     }
@@ -82,6 +75,17 @@ const Table = (props) => {
         setData(jsonData);
     }
     
+        const filterImage = (pics) => {
+            let updatedUsers = importedData;
+            updatedUsers.map((current) => {
+                let currentImage = pics.find(image => image.name === `${current.Username}.jpg`)
+                current.image = currentImage;
+            })        
+            setEmployees([
+                ...updatedUsers
+            ])
+        }
+    
     const displayImportedNumbers = (employees) => {
         let green = 0;
         let blue = 0;
@@ -91,76 +95,49 @@ const Table = (props) => {
         setGB(green)
         setBB(blue)
     }
-
-    const assignIDs = (event) => {
-        if(event) {
-            let addEmployees = {
-                'pickers' : generateID(Number(event.pick)),
-                'yardMarshalls' : generateID(Number(event.yard)),
-                'problemSolve': generateID(Number(event.ps)),
-                'specialAssignment' : generateID( Number(event.spcl)),
-                'badgeCheck': generateID(Number(event.badge))
-            }
-            filterImage(addEmployees)
-        }
-    }
-
-    const filterImage = (user) => {
-        let localUser = {};   
-        for (const [key, value ] of Object.entries(user)){
-            value.map((current) => {
-                let currentImage = pictures.find(image => image.name === `${current.Username}.jpg`)
-                current.image = currentImage;
-            })        
-            localUser[key] = value;
-        }
-        setEmployees({
-            ...localUser
-        })
-    }
     
  // error state 
-    
+ 
 // try {
     
-// } catch (error) {
-    
-// }
-
-    let workingEmployees = [];
-    const generateID = (number) => {    
-            let currentEmployees = [];
-            for (let i = 0; i < number; i++){
-                let index = Math.floor(Math.random() * importedData.length)
-                if(workingEmployees.includes(importedData[index])){
-                    --i
-                }
-                else{
-                    workingEmployees.push(importedData[index]);
-                    currentEmployees.push(importedData[index]);
-                }
-            }
-        console.log('working ', workingEmployees);
-        console.log('current ', currentEmployees);
-        return currentEmployees;
-    }
-
-    const handleClick = (e) => {
-        openWindow({title:'Set a task'})
-    }
-
-    const closeWindow = () => {
-        openWindow()
-    }
-
-    const saveActiveEmployees = (props) => {
-        setActiveEmployees([...props])
-        displayImportedNumbers(props)
-    }
-    
-    return (
-        <div className={classes.background}>
-            {console.log(activeEmployees)}
+    // } catch (error) {
+        
+        // }
+        
+        const handleClick = (e) => {
+            openWindow({title:'Set a task'})
+        }
+        
+        const closeWindow = () => {
+            openWindow()
+        }
+        
+        const saveActiveEmployees = (props) => {
+            setActiveEmployees([...props])
+            displayImportedNumbers(props)
+        }
+        
+        const openList = () => {
+            showList(true)
+            setActiveEmployees([])
+        }
+        
+        const hideList = () => {
+            showList(false)
+        }
+       
+       const popUp = (e) => {
+        openSettings(e)
+       }
+       
+       const removePopUp = () => {
+        if(importedData && pictures != 0){
+            openSettings()
+        }
+       }  
+         
+        return (
+            <div className={classes.background}>
             {settings && 
             <MessageBox title={settings.title} close={removePopUp}>
                 <div className={classes.messagebox_line}>
@@ -176,7 +153,6 @@ const Table = (props) => {
                 <List workers={importedData} pictures={pictures} onClick={hideList} getActive={saveActiveEmployees}/>
             }
             <Menu list={openList}/>
-            <Action sendData = {getNumbers} />
                 <div className={classes.info_container}>
                     <div className={classes.date}>
                         <h2>Date</h2>
@@ -184,6 +160,7 @@ const Table = (props) => {
                     </div>
                     <div className={classes.shift_container}>
                             <h1>Early Shift</h1>
+                        <Action click = {(props) => {setStart(props)}} />
                     </div>
                     <div className={classes.import_container}>
                             <h3>Imported</h3>
@@ -197,7 +174,7 @@ const Table = (props) => {
                             </div>
                     </div>
                 </div>
-            <Users click={handleClick} workers={activeEmployees} ></Users>
+            <Users click={handleClick} workers={activeEmployees} display={start}></Users>
         </div>
     )
 }

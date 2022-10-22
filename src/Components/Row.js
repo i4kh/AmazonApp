@@ -18,6 +18,7 @@ const Row = (props) => {
 
     const handleClick = () => {
         props.sendActiveUsers(someUsers);
+        props.hideList()
     }
     
     return(
@@ -44,7 +45,7 @@ const Row = (props) => {
                     ))}
                 </div>
             </div>
-            <button onClick={handleClick}>Save</button> 
+            <button classname={classes.button} onClick={handleClick}>Save</button> 
         </div>
       )
 }

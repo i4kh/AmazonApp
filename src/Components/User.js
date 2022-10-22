@@ -19,8 +19,8 @@ const User = (props) => {
             <div className={classes.container} onClick={() => {setEmployeeCard(true)}}>
                 <div className={classes.user_container} onClick={props.handleClick}>
                 <img src={URL.createObjectURL(props.data.image)} alt='user-image' className={props.data.Employment_Type == 'TEMP' ? classes.image_green : classes.image_blue}/>
-                    <p className={classes.username}>{props.data.Username}</p>
-                    <p className={classes.task}>{task}</p>
+                    <div className={classes.username}>{props.data.Username}</div>
+                    <div className={classes.task}>{task}</div>
                 </div>
             </div>
         </div>

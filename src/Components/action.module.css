@@ -1,58 +1,35 @@
 .container{
     color: #1c1919;
-    background-color: lightgray;
-    width: 95%;
-    margin: 2% 0 0 2.5%;
-    border-radius: 5px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.left{
-    width: 80%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-}
-.right{
-    display: flex;
-    align-items: flex-end;
-    justify-content: flex-end;
-    justify-content: center;
-    margin: 1% 2% 0 -1%;
-    /* margin-right: 2%;
-    margin-left: -1%; */
+    /* border: 1px solid red; */
+    /* background-color: lightgray; */
+    /* width: 95%; */
+    /* margin: 2% 0 0 2.5%; */
+    /* border-radius: 5px; */
+    /* display: flex;
+    flex-direction: column; */
+    margin-top: -3%;
+    margin-left: 4%;
+    margin-bottom: 3%;
+    /* justify-content: flex-start; */
+    /* align-items: flex-start; */
+    /* margin-right: 50%; */
+    /* padding-left: -10%; */
 }
 .buttons{
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    align-items: flex-start;
 }
 .button{
-    background-color: none;
-    font-family: 'Roboto', sans-serif;
-    text-transform: uppercase;
-    margin-bottom: 5%;
-}
-.input_container{
-    display: flex;
-    justify-content: space-evenly;
-    width: 100%;
-    margin-bottom: 2%;
-}
-.input_line{
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-}
-.input{
-    width: 30px;
+    font-size: 13px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 700;
+    margin-top: 2%;
     height: 30px;
     background-color: none;
-    border: 1px solid #1c1919; 
-    border-radius: 3px;
-}
-.input::-webkit-inner-spin-button,
-.input::-webkit-outer-spin-button{
-    -webkit-appearance: none;
+    width: 20%;
+    font-family: 'Roboto', sans-serif;
+    text-transform: uppercase;
+    cursor: pointer;
+    /* margin-bottom: 5%; */
 }

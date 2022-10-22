@@ -22,7 +22,7 @@ const List = (props) => {
             <div className={classes.background} onClick={props.onClick}/>
             <div className={classes.scroller}>
                 <Header /> 
-                <Row data = {localData} sendActiveUsers={getActiveUsers} />
+                <Row data = {localData} sendActiveUsers={getActiveUsers} hideList={props.onClick} />
             </div>
         </div>
     )
