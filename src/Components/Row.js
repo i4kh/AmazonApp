@@ -45,7 +45,7 @@ const Row = (props) => {
                     ))}
                 </div>
             </div>
-            <button classname={classes.button} onClick={handleClick}>Save</button> 
+            <button className={classes.button} onClick={handleClick}>Save</button> 
         </div>
       )
 }

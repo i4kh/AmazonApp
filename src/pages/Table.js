@@ -121,10 +121,6 @@ const Table = (props) => {
             showList(true)
             setActiveEmployees([])
         }
-        
-        const hideList = () => {
-            showList(false)
-        }
        
        const popUp = (e) => {
         openSettings(e)
@@ -150,9 +146,9 @@ const Table = (props) => {
                 </div>
             </MessageBox>}
             {list &&
-                <List workers={importedData} pictures={pictures} onClick={hideList} getActive={saveActiveEmployees}/>
+                <List workers={importedData} pictures={pictures} onClick={() => {showList(false)}} getActive={saveActiveEmployees}/>
             }
-            <Menu list={openList}/>
+            <Menu list={openList} import={()=> {}}/>
                 <div className={classes.info_container}>
                     <div className={classes.date}>
                         <h2>Date</h2>
@@ -160,7 +156,7 @@ const Table = (props) => {
                     </div>
                     <div className={classes.shift_container}>
                             <h1>Early Shift</h1>
-                        <Action click = {(props) => {setStart(props)}} />
+                        <Action click = {(props) => {setStart(props)}} close = {() => {setActiveEmployees([]); setBB(0); setGB(0)}} />
                     </div>
                     <div className={classes.import_container}>
                             <h3>Imported</h3>

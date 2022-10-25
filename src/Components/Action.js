@@ -59,7 +59,7 @@ const Action = (props) => {
         <div className={classes.container}>
                 <div className={classes.buttons}>
                     <Button className={classes.button} onClick={startShift}> Start Shift </Button>
-                    <Button className={classes.button}> Clear Board </Button>
+                    <Button className={classes.button} onClick={props.close}> Clear </Button>
                 </div>
         </div>
     )

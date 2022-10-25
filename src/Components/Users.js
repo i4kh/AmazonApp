@@ -32,15 +32,18 @@ const Users = (props) => {
                         {displayEmployees()}
                     </div>                
                     <div className={classes.container_right}>
-                    <h2 className={classes.title}>Yard Marshalls</h2>
-                    <div className={classes.yard}>
-                        <PickEmployee workers={availableWorkers} sendWorkers={(array) => {setAvailableWorkers([...array])}}/>
-                    </div>
-                    <h2 className={classes.title}>Problem Solve</h2>
-                    <div className={classes.yard}>
-                        <PickEmployee workers={availableWorkers} sendWorkers={(array) => {setAvailableWorkers([...array])}}/>    
-                    </div>
-                    <div className={classes.container_bottom}>
+                        <div>
+                            <h2 className={classes.title}>Yard Marshalls</h2>
+                            <div className={classes.yard}>
+                                <PickEmployee workers={availableWorkers} sendWorkers={(array) => {setAvailableWorkers([...array])}}/>
+                            </div>
+                        </div>
+                        <div>
+                            <h2 className={classes.title}>Problem Solve</h2>
+                            <div className={classes.yard}>
+                                <PickEmployee workers={availableWorkers} sendWorkers={(array) => {setAvailableWorkers([...array])}}/>    
+                            </div>
+                        </div>
                         <div>
                             <h2 className={classes.title}>Special Assignment</h2>
                             <div className={classes.specialAssignment}>
@@ -53,7 +56,6 @@ const Users = (props) => {
                                 <PickEmployee workers={employees} sendWorkers={(array) => {setAvailableWorkers([...array])}}/>
                             </div>
                         </div>
-                    </div>
                     </div>
                 </div>
             </div>

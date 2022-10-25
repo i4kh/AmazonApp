@@ -5,8 +5,14 @@
     overflow-y: scroll;
     display: flex;
     flex-direction: column;
-    height: 83vh;
+    height: 81vh;
+    /* height: 95%; */
+    -ms-overflow-style: none; 
+    scrollbar-width: none; 
 }
+.big_container::-webkit-scrollbar {
+    display: none;
+ }
 .container{
     display: flex;
     width: 100%;
@@ -60,7 +66,18 @@
     cursor: pointer;
 }
 .button{ 
+    /* margin: 0 0 0 2%; */
+    margin-left: 2%;
+    margin-top: -1%;
+    font-weight: 700;
     width: 100px;
-    font-size: 36px;
-    text-align: center;
+    height: 30px;
+    border: none;
+    background-color: lightgray;
+    cursor: pointer;
+    font-size: 20px;
+    text-transform: uppercase;
+}
+.button:hover{
+    color: #fba016;;
 }
