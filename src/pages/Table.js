@@ -38,18 +38,6 @@ const Table = (props) => {
         importedData && pictures ? popUp() : popUp({title: 'Import data'})
     }, [importedData, pictures])
 
-    
-    //localStorage test
-    //image import-export doesn't work
-    
-    let localEmployees = [];
-    useEffect(() => {
-        console.log(employees);
-        localStorage.setItem('EmployeeList', JSON.stringify(employees));
-        localEmployees = JSON.parse(localStorage.getItem('EmployeeList'));
-        console.log(localEmployees);
-    }, [employees])
-    
     const checkFileFormat = (e) => {
         const file = e.target.files[0].name;
         const correctFormats = ['xlsx', 'xltm', 'xlsm', 'xlsb', 'xltx', 'xltm'];
@@ -95,15 +83,7 @@ const Table = (props) => {
         setGB(green)
         setBB(blue)
     }
-    
- // error state 
- 
-// try {
-    
-    // } catch (error) {
-        
-        // }
-        
+       
         const handleClick = (e) => {
             openWindow({title:'Set a task'})
         }
@@ -131,6 +111,10 @@ const Table = (props) => {
             openSettings()
         }
        }  
+
+       const startShift = (ev) => {
+        setStart(ev);
+       }
          
         return (
             <div className={classes.background}>

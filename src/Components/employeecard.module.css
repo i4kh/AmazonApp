@@ -47,7 +47,8 @@
 }
 .right{
     padding-left: 5%;
-    flex-wrap: wrap;
+    display: flex;
+    /* flex-wrap: wrap; */
     flex-grow: 1;
 }
 .right input {

@@ -18,9 +18,11 @@ const PickEmployee = (props) => {
     }, [props.workers])
     
     useEffect(() => {
-        console.log('in pick ', availableEmployees);
         if(availableEmployees == 0){
             setDisplayEmployees([])
+        }
+        if(availableEmployees.length > props.workers.length){
+            props.sendWorkers(availableEmployees)
         }
     }, [availableEmployees])
 
@@ -34,9 +36,8 @@ const PickEmployee = (props) => {
         let userIndex = availableEmployees.findIndex(checkUser); 
         availableEmployees.splice(userIndex, 1);
         props.sendWorkers(availableEmployees)
-        console.log('sent ', availableEmployees);
-        setDisplayEmployees([...displayEmployees, <User data={selectedUser}/>])
-        console.log('saved');
+        // availableEmployees.indexOf(selectedUser) === -1 ? console.log('is not included') : console.log('is included');
+        setDisplayEmployees([...displayEmployees, <User data={selectedUser} workers={availableEmployees} remove={changeAvailableEmployees}/>]);
         openEmployeeSelection(false)
     }
 

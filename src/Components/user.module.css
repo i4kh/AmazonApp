@@ -1,6 +1,7 @@
 .container{
-    height: 180px;
-    width: 150px;
+    /* border: 1px solid blue; */
+    height: 160px;
+    width: 110px;
     display: flex;
     flex-wrap: wrap;
     flex: 1 0 20%;
@@ -8,6 +9,11 @@
     /* margin-right: 125%; */
 }
 .user_container{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    /* align-items: flex-start; */
+    height: 90%;
     width: 20%;
     /* height: 100px; */
     display: flex;

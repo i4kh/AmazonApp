@@ -18,24 +18,28 @@
 .container_left{
     width: 55%;
     display: flex;
-    justify-content: center; 
-    align-items: center;
+    /* justify-content: flex-start;  */
+    align-items: flex-start;
     flex-wrap: wrap;
 }
 
 .container_left>*{
-    flex: 1 0 15%;
+    flex-basis: 15%;
+    /* flex: 1 0 15%; */
 }
 
 .container_right{
+    height: 60%;
     width: 45%;
     display: flex;
-    flex-wrap: wrap;
-   /* flex-direction: column; */
-    align-items: flex-start;
+   flex-direction: column;
+   justify-content: flex-start;
 }
-.container_right>*{
-    flex: 1 0 50%;
+.right_bottom{
+    display: flex;
+}
+.right_bottom div{
+    width: 50%;
 }
 
 .table{
@@ -44,11 +48,9 @@
 
 .yard, .specialAssignment, .badgeCheck{
     display: flex;
-    justify-content: flex-start;
-    /* flex-wrap: wrap; */
-    border: 1px solid red;
+    width: 100%;
+    overflow-x: scroll;
 }
-
- .yard>*{
-    flex: 1 0 30%;   
-} 
+.yard::-webkit-scrollbar, .specialAssignment::-webkit-scrollbar, .badgeCheck::-webkit-scrollbar {
+height: 0;
+}

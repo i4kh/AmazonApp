@@ -9,19 +9,15 @@ const Users = (props) => {
 
     useEffect(() => {
         setAvailableWorkers([...props.workers]);
-        console.log('availableWorkers changed to ', props.workers);
     }, [props.workers])
     
     useEffect(() => {
         console.log('received ', availableWorkers);
     }, [availableWorkers])
 
-    let employees = availableWorkers == 0 ? [...props.workers] : availableWorkers;
-
     const displayEmployees = () => {
-        
         let array = props.display ? availableWorkers : [];
-        return array ? array.map((value, index) => <User data={value} index={index} />) : '';
+        return array ? array.map((value) => <User data={value} workers={availableWorkers} remove={(array) => {setAvailableWorkers([...array])}} />) : '';
     }
 
     return(
@@ -30,6 +26,7 @@ const Users = (props) => {
                 <div className={classes.table}>
                     <div className={classes.container_left}>
                         {displayEmployees()}
+                        <PickEmployee workers={availableWorkers} sendWorkers={(array) => {setAvailableWorkers([...array])}}/>
                     </div>                
                     <div className={classes.container_right}>
                         <div>
@@ -45,17 +42,19 @@ const Users = (props) => {
                             </div>
                         </div>
                         <div>
-                            <h2 className={classes.title}>Special Assignment</h2>
+                            <h2 className={classes.title}>Badge Check</h2>
                             <div className={classes.specialAssignment}>
-                                <PickEmployee workers={employees} sendWorkers={(array) => {setAvailableWorkers([...array])}} />
+                                <PickEmployee workers={availableWorkers} sendWorkers={(array) => {setAvailableWorkers([...array])}} />
                             </div>
                         </div>
                         <div>
-                            <h2 className={classes.title}>Badge Check</h2>
+                            <h2 className={classes.title}>Special Assignment</h2>
                             <div className={classes.badgeCheck}>
-                                <PickEmployee workers={employees} sendWorkers={(array) => {setAvailableWorkers([...array])}}/>
+                                <PickEmployee workers={availableWorkers} sendWorkers={(array) => {setAvailableWorkers([...array])}}/>
                             </div>
                         </div>
+                        {/* <div className={classes.right_bottom}>
+                        </div> */}
                     </div>
                 </div>
             </div>

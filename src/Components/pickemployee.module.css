@@ -9,13 +9,15 @@
 
 .theBigOne{
     display: flex;
-    align-items: center;
-    padding-bottom: 10%;
-    flex-wrap: wrap;
+    /* align-items: center; */
+    padding-bottom: 2%;
+    /* flex-wrap: wrap; */
+    justify-content: flex-start;
+    /* border: 1px solid green; */
 }
-.theBigOne>*{
+/* .theBigOne>*{
     flex: 1 0 20%;
-}
+} */
 
 .picker{
     width: 40%;
@@ -24,7 +26,7 @@
     top: 0vh;
     left: 30%;
     display: flex;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
     align-items: center;
     justify-content: space-evenly;
     background: rgba(255, 255, 255, 0.25);
@@ -33,10 +35,6 @@
     backdrop-filter: blur(6.3px);
     -webkit-backdrop-filter: blur(6.3px);
     border: 1px solid rgba(255, 255, 255, 0.44);
-}
-
-.picker>*{
-    flex: 1 0 20%;
 }
 
 select{

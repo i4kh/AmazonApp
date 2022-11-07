@@ -1,9 +1,14 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import classes from './employeecard.module.css'
 
 const EmployeeCard = (props) => {
 
     const [task, setTask] = useState()
+    const [localAvaialableEmployees, setLocalAvailableEmployees ] = useState()
+    
+    useEffect(() => {
+        setLocalAvailableEmployees(props.workers)
+    }, [props.workers])
 
     const getSpecialTask = (e) => {
         setTask(e.target.value)
@@ -11,6 +16,12 @@ const EmployeeCard = (props) => {
     
     const handleSubmit = (e) => {
         props.task(task)
+        props.close()
+    }
+
+    const handleRemove = (e) => {
+        console.log(localAvaialableEmployees);
+        props.remove([...localAvaialableEmployees, props.data])
         props.close()
     }
 
@@ -40,7 +51,7 @@ const EmployeeCard = (props) => {
                             <h3>{props.data.Name} {props.data.Surname}</h3>
                             <h3>{props.data.Badge_ID}</h3>
                             <h3>{props.data.Employee_ID}</h3>
-                            <input type='text' onChange={getSpecialTask} />
+                            <input type='text' onChange={getSpecialTask} /> 
                         </div>
                     </div>
                 </div>
@@ -49,7 +60,7 @@ const EmployeeCard = (props) => {
                         <button type='submit' className={classes.button} onClick={handleSubmit}>Save</button>
                     </div>
                     <div className={classes.bottom_right}>
-                        <button className={classes.button_red} onClick={() => {}}>Delete</button>
+                        <button className={classes.button_red} onClick={handleRemove}>Remove</button>
                     </div>
                 </div>
             </div>
